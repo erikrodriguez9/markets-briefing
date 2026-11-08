@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!-- Template: replace YOUR_USERNAME with your macOS username (or the full
+     path to wherever you cloned the repo) before installing. -->
+<dict>
+    <key>Label</key>
+    <string>com.erikrodriguez.markets-briefing</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/YOUR_USERNAME/markets-briefing/run-briefing.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/YOUR_USERNAME/markets-briefing</string>
+
+    <!-- Fire on login / when the agent is (re)loaded. -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- Fire every 30 min while the Mac is awake; if it was asleep, launchd
+         coalesces the misses into a single run shortly after wake/unlock.
+         The wrapper's once-per-day guard makes all but the first a no-op. -->
+    <key>StartInterval</key>
+    <integer>1800</integer>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+    <key>LowPriorityIO</key>
+    <true/>
+
+    <!-- launchd-level output only (spawn failures). The briefing's own output
+         goes to logs/briefing.log, written by the wrapper. -->
+    <key>StandardOutPath</key>
+    <string>/Users/YOUR_USERNAME/markets-briefing/logs/launchd.err.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/YOUR_USERNAME/markets-briefing/logs/launchd.err.log</string>
+</dict>
+</plist>

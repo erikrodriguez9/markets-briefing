@@ -1,0 +1,5 @@
+# The core briefing (NYT Top Stories -> bucketed digest) is standard-library only.
+# These are needed for the optional enrichment flags:
+
+feedparser        # --summary / --audio: pull the FT and Economist RSS feeds
+gTTS              # --audio fallback when `say` + an mp3 encoder aren't available
